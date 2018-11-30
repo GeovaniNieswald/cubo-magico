@@ -2,6 +2,8 @@ package com.acme.model;
 
 import com.acme.enumeration.Cor;
 import com.acme.enumeration.Lado;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cubo {
 
@@ -12,9 +14,6 @@ public class Cubo {
     private int[][] esquerda;
     private int[][] direita;
 
-    private int[][] matrizAux;
-    private int[] vetorAux;
-
     public Cubo() {
         frente = new int[3][3];
         cima = new int[3][3];
@@ -22,9 +21,6 @@ public class Cubo {
         baixo = new int[3][3];
         esquerda = new int[3][3];
         direita = new int[3][3];
-
-        matrizAux = new int[3][3];
-        vetorAux = new int[3];
 
         povoarCuboResolvido();
     }
@@ -40,6 +36,19 @@ public class Cubo {
                 direita[linha][coluna] = Cor.VERMELHO.getCodigoCor();
             }
         }
+    }
+
+    public List<int[][]> getFaces() {
+        List<int[][]> faces = new ArrayList<>();
+
+        faces.add(frente);
+        faces.add(cima);
+        faces.add(atras);
+        faces.add(baixo);
+        faces.add(esquerda);
+        faces.add(direita);
+
+        return faces;
     }
 
     public void exibirCubo() {
@@ -63,15 +72,19 @@ public class Cubo {
         System.out.println("");
     }
 
-    public void girarEsquerda(int linha) {
-        matrizAux[linha] = esquerda[linha];
+    public void girarEsquerda(int numLinha) {
+        int[][] matrizAux = new int[3][3];
 
-        esquerda[linha] = frente[linha];
-        frente[linha] = direita[linha];
-        direita[linha] = atras[linha];
-        atras[linha] = matrizAux[linha];
+        matrizAux[numLinha] = esquerda[numLinha];
 
-        switch (linha) {
+        esquerda[numLinha] = frente[numLinha];
+        frente[numLinha] = direita[numLinha];
+        direita[numLinha] = atras[numLinha];
+        atras[numLinha] = matrizAux[numLinha];
+
+        matrizAux = new int[3][3];
+
+        switch (numLinha) {
             case 0:
                 matrizAux[0][0] = cima[0][0];
 
@@ -103,15 +116,19 @@ public class Cubo {
         }
     }
 
-    public void girarDireita(int linha) {
-        matrizAux[linha] = direita[linha];
+    public void girarDireita(int numLinha) {
+        int[][] matrizAux = new int[3][3];
 
-        direita[linha] = frente[linha];
-        frente[linha] = esquerda[linha];
-        esquerda[linha] = atras[linha];
-        atras[linha] = matrizAux[linha];
+        matrizAux[numLinha] = direita[numLinha];
 
-        switch (linha) {
+        direita[numLinha] = frente[numLinha];
+        frente[numLinha] = esquerda[numLinha];
+        esquerda[numLinha] = atras[numLinha];
+        atras[numLinha] = matrizAux[numLinha];
+
+        matrizAux = new int[3][3];
+
+        switch (numLinha) {
             case 0:
                 matrizAux[0][0] = cima[0][0];
 
@@ -144,14 +161,89 @@ public class Cubo {
     }
 
     public void girarCima(int numColuna) {
+        int[] vetorAux = new int[3];
+        int[][] matrizAux = new int[3][3];
+
         vetorAux = getColuna(numColuna, Lado.CIMA);
         setColuna(numColuna, getColuna(numColuna, Lado.FRENTE), Lado.CIMA);
         setColuna(numColuna, getColuna(numColuna, Lado.BAIXO), Lado.FRENTE);
+        setColuna(numColuna, getColuna(numColuna, Lado.ATRAS), Lado.BAIXO);
+        setColuna(numColuna, vetorAux, Lado.ATRAS);
 
+        switch (numColuna) {
+            case 0:
+                matrizAux[0][0] = esquerda[0][0];
+                
+                esquerda[0][0] = esquerda[0][2];
+                esquerda[0][2] = esquerda[2][2];
+                esquerda[2][2] = esquerda[2][0];
+                esquerda[2][0] = matrizAux[0][0];
+                
+                matrizAux[0][1] = esquerda[0][1];
+                
+                esquerda[0][1] = esquerda[1][2];
+                esquerda[1][2] = esquerda[2][1];
+                esquerda[2][1] = esquerda[1][0];
+                esquerda[1][0] = matrizAux[0][1];
+                break;
+            case 2:
+                matrizAux[0][2] = direita[0][2];
+                
+                direita[0][2] = direita[0][0];
+                direita[0][0] = direita[2][0];
+                direita[2][0] = direita[2][2];
+                direita[2][2] = matrizAux[0][2];
+                
+                matrizAux[1][2] = direita[1][2];
+                
+                direita[1][2] = direita[0][1];
+                direita[0][1] = direita[1][0];
+                direita[1][0] = direita[2][1];
+                direita[2][1] = matrizAux[1][2];
+        }
     }
 
-    private void girarBaixo(int coluna) {
+    public void girarBaixo(int numColuna) {
+        int[] vetorAux = new int[3];
+        int[][] matrizAux = new int[3][3];
 
+        vetorAux = getColuna(numColuna, Lado.BAIXO);
+        setColuna(numColuna, getColuna(numColuna, Lado.FRENTE), Lado.BAIXO);
+        setColuna(numColuna, getColuna(numColuna, Lado.CIMA), Lado.FRENTE);
+        setColuna(numColuna, getColuna(numColuna, Lado.ATRAS), Lado.CIMA);
+        setColuna(numColuna, vetorAux, Lado.ATRAS);
+        
+        switch (numColuna) {
+            case 0:
+                matrizAux[0][2] = esquerda[0][2];
+                
+                esquerda[0][2] = esquerda[0][0];
+                esquerda[0][0] = esquerda[2][0];
+                esquerda[2][0] = esquerda[2][2];
+                esquerda[2][2] = matrizAux[0][2];
+                
+                matrizAux[1][2] = esquerda[1][2];
+                
+                esquerda[1][2] = esquerda[0][1];
+                esquerda[0][1] = esquerda[1][0];
+                esquerda[1][0] = esquerda[2][1];
+                esquerda[2][1] = matrizAux[1][2];
+                break;
+            case 2:
+                matrizAux[0][0] = direita[0][0];
+                
+                direita[0][0] = direita[0][2];
+                direita[0][2] = direita[2][2];
+                direita[2][2] = direita[2][0];
+                direita[2][0] = matrizAux[0][0];
+                
+                matrizAux[0][1] = direita[0][1];
+                
+                direita[0][1] = direita[1][2];
+                direita[1][2] = direita[2][1];
+                direita[2][1] = direita[1][0];
+                direita[1][0] = matrizAux[0][1];
+        }
     }
 
     private int[] getColuna(int numColuna, Lado lado) {
@@ -164,9 +256,15 @@ public class Cubo {
                 coluna[2] = frente[2][numColuna];
                 break;
             case ATRAS:
-                coluna[0] = atras[0][numColuna];
+                if (numColuna == 0) {
+                    numColuna = 2;
+                } else if (numColuna == 2) {
+                    numColuna = 0;
+                }
+
+                coluna[0] = atras[2][numColuna];
                 coluna[1] = atras[1][numColuna];
-                coluna[2] = atras[2][numColuna];
+                coluna[2] = atras[0][numColuna];
                 break;
             case ESQUERDA:
                 coluna[0] = esquerda[0][numColuna];
@@ -200,9 +298,15 @@ public class Cubo {
                 frente[2][numColuna] = coluna[2];
                 break;
             case ATRAS:
-                atras[0][numColuna] = coluna[0];
+                if (numColuna == 0) {
+                    numColuna = 2;
+                } else if (numColuna == 2) {
+                    numColuna = 0;
+                }
+
+                atras[2][numColuna] = coluna[0];
                 atras[1][numColuna] = coluna[1];
-                atras[2][numColuna] = coluna[2];
+                atras[0][numColuna] = coluna[2];
                 break;
             case ESQUERDA:
                 esquerda[0][numColuna] = coluna[0];
