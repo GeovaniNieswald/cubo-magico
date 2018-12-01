@@ -4,6 +4,9 @@ import com.acme.enumeration.Cor;
 import com.acme.model.Cubo;
 import java.awt.Color;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class JFPrincipal extends javax.swing.JFrame {
 
@@ -83,14 +86,20 @@ public class JFPrincipal extends javax.swing.JFrame {
         pos52 = new javax.swing.JButton();
         pos53 = new javax.swing.JButton();
         pos54 = new javax.swing.JButton();
-        jbGirarEsquerda = new javax.swing.JButton();
-        jtfLinha = new javax.swing.JTextField();
-        jbGirarDireita = new javax.swing.JButton();
+        containerComandos = new javax.swing.JPanel();
+        jbEmbaralhar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jbGirarCima = new javax.swing.JButton();
-        jbGirarBaixo = new javax.swing.JButton();
-        jtfColuna = new javax.swing.JTextField();
+        jtfLinha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jtfColuna = new javax.swing.JTextField();
+        jbGirarCima = new javax.swing.JButton();
+        jbGirarHorario = new javax.swing.JButton();
+        jbGirarAntiHorario = new javax.swing.JButton();
+        jbGirarBaixo = new javax.swing.JButton();
+        jbGirarDireita = new javax.swing.JButton();
+        jbGirarEsquerda = new javax.swing.JButton();
+        jbSolucionarForcaBruta = new javax.swing.JButton();
+        jbSolucionarMetodoX = new javax.swing.JButton();
         barra = new javax.swing.JPanel();
         fechar = new javax.swing.JLabel();
         minimizar = new javax.swing.JLabel();
@@ -159,7 +168,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             frenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frenteLayout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addGroup(frenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(frenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(frenteLayout.createSequentialGroup()
                         .addComponent(pos1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
@@ -167,17 +176,19 @@ public class JFPrincipal extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addComponent(pos3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(frenteLayout.createSequentialGroup()
-                        .addComponent(pos7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(frenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(frenteLayout.createSequentialGroup()
+                                .addComponent(pos7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)
+                                .addComponent(pos8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(frenteLayout.createSequentialGroup()
+                                .addComponent(pos4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)
+                                .addComponent(pos5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(1, 1, 1)
-                        .addComponent(pos8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(pos9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(frenteLayout.createSequentialGroup()
-                        .addComponent(pos4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(pos5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(pos6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(frenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pos6, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                            .addComponent(pos9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(1, 1, 1))
         );
         frenteLayout.setVerticalGroup(
@@ -254,7 +265,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         direitaLayout.setHorizontalGroup(
             direitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(direitaLayout.createSequentialGroup()
-                .addGroup(direitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(direitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(direitaLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(direitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -271,13 +282,12 @@ public class JFPrincipal extends javax.swing.JFrame {
                                 .addGap(1, 1, 1)
                                 .addComponent(pos12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(direitaLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(pos13, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
+                        .addGap(1, 1, 1)
                         .addComponent(pos14, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
                         .addComponent(pos15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(1, 1, 1))
+                .addGap(0, 0, 0))
         );
         direitaLayout.setVerticalGroup(
             direitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -697,30 +707,80 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addGap(1, 1, 1))
         );
 
-        jbGirarEsquerda.setText("Girar Esquerda");
-        jbGirarEsquerda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbGirarEsquerdaActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout containerFacesLayout = new javax.swing.GroupLayout(containerFaces);
+        containerFaces.setLayout(containerFacesLayout);
+        containerFacesLayout.setHorizontalGroup(
+            containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(containerFacesLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(esquerda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(containerFacesLayout.createSequentialGroup()
+                        .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(containerFacesLayout.createSequentialGroup()
+                                .addComponent(frente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(direita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(atras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(baixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(containerFacesLayout.createSequentialGroup()
+                        .addComponent(cima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        containerFacesLayout.setVerticalGroup(
+            containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(containerFacesLayout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(cima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(esquerda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(frente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(direita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(atras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(baixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
 
-        jtfLinha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfLinha.setText("0");
-        jtfLinha.setToolTipText("Linha");
-
-        jbGirarDireita.setText("Girar Direita");
-        jbGirarDireita.addActionListener(new java.awt.event.ActionListener() {
+        jbEmbaralhar.setText("Embaralhar");
+        jbEmbaralhar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbGirarDireitaActionPerformed(evt);
+                jbEmbaralharActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Linha:");
 
+        jtfLinha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfLinha.setText("0");
+        jtfLinha.setToolTipText("Linha");
+
+        jLabel2.setText("Coluna:");
+
+        jtfColuna.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jtfColuna.setText("0");
+        jtfColuna.setToolTipText("Coluna");
+
         jbGirarCima.setText("Girar Cima");
         jbGirarCima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGirarCimaActionPerformed(evt);
+            }
+        });
+
+        jbGirarHorario.setText("Girar Horario");
+        jbGirarHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGirarHorarioActionPerformed(evt);
+            }
+        });
+
+        jbGirarAntiHorario.setText("Girar Anti Horario");
+        jbGirarAntiHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGirarAntiHorarioActionPerformed(evt);
             }
         });
 
@@ -731,79 +791,90 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jtfColuna.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfColuna.setText("0");
-        jtfColuna.setToolTipText("Coluna");
+        jbGirarDireita.setText("Girar Direita");
+        jbGirarDireita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGirarDireitaActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setText("Coluna:");
+        jbGirarEsquerda.setText("Girar Esquerda");
+        jbGirarEsquerda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGirarEsquerdaActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout containerFacesLayout = new javax.swing.GroupLayout(containerFaces);
-        containerFaces.setLayout(containerFacesLayout);
-        containerFacesLayout.setHorizontalGroup(
-            containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(containerFacesLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(esquerda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(containerFacesLayout.createSequentialGroup()
-                        .addComponent(frente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(direita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(atras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(containerFacesLayout.createSequentialGroup()
-                        .addComponent(baixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(150, 150, 150)
-                        .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jbGirarEsquerda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtfLinha)
-                            .addComponent(jbGirarDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(40, 40, 40)
-                        .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jbGirarBaixo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbGirarCima, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtfColuna)
-                            .addComponent(jLabel2))))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        containerFacesLayout.setVerticalGroup(
-            containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(containerFacesLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(cima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(containerFacesLayout.createSequentialGroup()
-                        .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(esquerda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(frente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(direita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(atras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0)
-                        .addComponent(baixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(30, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerFacesLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerFacesLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(0, 0, 0)))
-                        .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtfLinha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfColuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbGirarEsquerda)
-                            .addComponent(jbGirarCima))
+        jbSolucionarForcaBruta.setText("Solucionar Por Força Bruta");
+        jbSolucionarForcaBruta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSolucionarForcaBrutaActionPerformed(evt);
+            }
+        });
+
+        jbSolucionarMetodoX.setText("Solucionar Pelo Metódo X");
+        jbSolucionarMetodoX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSolucionarMetodoXActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout containerComandosLayout = new javax.swing.GroupLayout(containerComandos);
+        containerComandos.setLayout(containerComandosLayout);
+        containerComandosLayout.setHorizontalGroup(
+            containerComandosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(containerComandosLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(containerComandosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(containerComandosLayout.createSequentialGroup()
+                        .addGroup(containerComandosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jbGirarCima, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jbGirarBaixo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
-                        .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbGirarDireita)
-                            .addComponent(jbGirarBaixo))
-                        .addGap(38, 38, 38))))
+                        .addGroup(containerComandosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jbGirarAntiHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbGirarHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jtfColuna)
+                    .addComponent(jLabel1)
+                    .addComponent(jbGirarEsquerda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbEmbaralhar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbGirarDireita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jtfLinha)
+                    .addComponent(jbSolucionarForcaBruta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbSolucionarMetodoX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
+        );
+        containerComandosLayout.setVerticalGroup(
+            containerComandosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(containerComandosLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jbEmbaralhar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jbSolucionarForcaBruta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jbSolucionarMetodoX, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(0, 0, 0)
+                .addComponent(jtfLinha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jbGirarEsquerda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jbGirarDireita, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addGap(0, 0, 0)
+                .addComponent(jtfColuna, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addGroup(containerComandosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbGirarCima, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbGirarHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(containerComandosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbGirarBaixo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbGirarAntiHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80))
         );
 
         barra.setBackground(new java.awt.Color(255, 255, 255));
@@ -853,16 +924,21 @@ public class JFPrincipal extends javax.swing.JFrame {
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerLayout.createSequentialGroup()
                 .addComponent(containerFaces, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-            .addComponent(barra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(containerComandos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         containerLayout.setVerticalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(containerLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(containerFaces, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerLayout.createSequentialGroup()
+                .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(containerFaces, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(containerLayout.createSequentialGroup()
+                        .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(containerComandos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -875,9 +951,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(container, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -893,24 +967,99 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_fecharMouseClicked
 
     private void jbGirarEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarEsquerdaActionPerformed
-        c.girarEsquerda(Integer.parseInt(jtfLinha.getText()));
-        colorir();
+        String campo = jtfLinha.getText().trim();
+
+        if (campo.equals("0") || campo.equals("1") || campo.equals("2")) {
+            c.girarEsquerda(Integer.parseInt(campo));
+            colorir();
+        } else {
+            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 1 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jbGirarEsquerdaActionPerformed
 
     private void jbGirarDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarDireitaActionPerformed
-        c.girarDireita(Integer.parseInt(jtfLinha.getText()));
-        colorir();
+        String campo = jtfLinha.getText().trim();
+
+        if (campo.equals("0") || campo.equals("1") || campo.equals("2")) {
+            c.girarDireita(Integer.parseInt(campo));
+            colorir();
+        } else {
+            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 1 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jbGirarDireitaActionPerformed
 
     private void jbGirarCimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarCimaActionPerformed
-        c.girarCima(Integer.parseInt(jtfColuna.getText()));
-        colorir();
+        String campo = jtfColuna.getText().trim();
+
+        if (campo.equals("0") || campo.equals("1") || campo.equals("2")) {
+            c.girarCima(Integer.parseInt(campo));
+            colorir();
+        } else {
+            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 1 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jbGirarCimaActionPerformed
 
     private void jbGirarBaixoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarBaixoActionPerformed
-        c.girarBaixo(Integer.parseInt(jtfColuna.getText()));
-        colorir();
+        String campo = jtfColuna.getText().trim();
+
+        if (campo.equals("0") || campo.equals("1") || campo.equals("2")) {
+            c.girarBaixo(Integer.parseInt(campo));
+            colorir();
+        } else {
+            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 1 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jbGirarBaixoActionPerformed
+
+    private void jbGirarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarHorarioActionPerformed
+        String campo = jtfColuna.getText().trim();
+
+        if (campo.equals("0") || campo.equals("1") || campo.equals("2")) {
+            c.girarHorario(Integer.parseInt(campo));
+            colorir();
+        } else {
+            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 1 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbGirarHorarioActionPerformed
+
+    private void jbGirarAntiHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarAntiHorarioActionPerformed
+        String campo = jtfColuna.getText().trim();
+
+        if (campo.equals("0") || campo.equals("1") || campo.equals("2")) {
+            c.girarAntiHorario(Integer.parseInt(campo));
+            colorir();
+        } else {
+            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 1 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbGirarAntiHorarioActionPerformed
+
+    private void jbEmbaralharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEmbaralharActionPerformed
+        jbEmbaralhar.setEnabled(false);
+
+        Thread t = new Thread(() -> {
+            for (int i = 0; i < 20; i++) {
+                c.embaralhar();
+                colorir();
+                
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            jbEmbaralhar.setEnabled(true);
+        });
+
+        t.start();
+    }//GEN-LAST:event_jbEmbaralharActionPerformed
+
+    private void jbSolucionarForcaBrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolucionarForcaBrutaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbSolucionarForcaBrutaActionPerformed
+
+    private void jbSolucionarMetodoXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolucionarMetodoXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbSolucionarMetodoXActionPerformed
 
     private void colorir() {
         List<int[][]> faces = c.getFaces();
@@ -1020,10 +1169,9 @@ public class JFPrincipal extends javax.swing.JFrame {
     }
 
     public static void main(String args[]) {
-
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("GTK+".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -1044,6 +1192,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel barra;
     private javax.swing.JPanel cima;
     private javax.swing.JPanel container;
+    private javax.swing.JPanel containerComandos;
     private javax.swing.JPanel containerFaces;
     private javax.swing.JPanel direita;
     private javax.swing.JPanel esquerda;
@@ -1051,10 +1200,15 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel frente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jbEmbaralhar;
+    private javax.swing.JButton jbGirarAntiHorario;
     private javax.swing.JButton jbGirarBaixo;
     private javax.swing.JButton jbGirarCima;
     private javax.swing.JButton jbGirarDireita;
     private javax.swing.JButton jbGirarEsquerda;
+    private javax.swing.JButton jbGirarHorario;
+    private javax.swing.JButton jbSolucionarForcaBruta;
+    private javax.swing.JButton jbSolucionarMetodoX;
     private javax.swing.JTextField jtfColuna;
     private javax.swing.JTextField jtfLinha;
     private javax.swing.JLabel minimizar;
