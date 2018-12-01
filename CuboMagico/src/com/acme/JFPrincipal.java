@@ -1,7 +1,6 @@
 package com.acme;
 
 import com.acme.enumeration.Cor;
-import com.acme.model.Cubo;
 import java.awt.Color;
 import java.awt.Component;
 import java.util.List;
@@ -97,8 +96,10 @@ public class JFPrincipal extends javax.swing.JFrame {
         jbGirarDireita = new javax.swing.JButton();
         jbGirarEsquerda = new javax.swing.JButton();
         jbSolucionarForcaBruta = new javax.swing.JButton();
-        jbSolucionarMetodoX = new javax.swing.JButton();
+        jbSolucionarMetodoBasico = new javax.swing.JButton();
         jbNovoCubo = new javax.swing.JButton();
+        jlResposta = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         barra = new javax.swing.JPanel();
         fechar = new javax.swing.JLabel();
         minimizar = new javax.swing.JLabel();
@@ -662,9 +663,8 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cima, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(baixo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(frente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(baixo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(frente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
                 .addComponent(direita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -764,11 +764,11 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbSolucionarMetodoX.setBackground(new java.awt.Color(204, 204, 204));
-        jbSolucionarMetodoX.setText("Solucionar Pelo Metódo X");
-        jbSolucionarMetodoX.addActionListener(new java.awt.event.ActionListener() {
+        jbSolucionarMetodoBasico.setBackground(new java.awt.Color(204, 204, 204));
+        jbSolucionarMetodoBasico.setText("Solucionar Pelo Metódo Básico");
+        jbSolucionarMetodoBasico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSolucionarMetodoXActionPerformed(evt);
+                jbSolucionarMetodoBasicoActionPerformed(evt);
             }
         });
 
@@ -779,6 +779,13 @@ public class JFPrincipal extends javax.swing.JFrame {
                 jbNovoCuboActionPerformed(evt);
             }
         });
+
+        jlResposta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlResposta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Cubo Mágico");
 
         javax.swing.GroupLayout containerComandosLayout = new javax.swing.GroupLayout(containerComandos);
         containerComandos.setLayout(containerComandosLayout);
@@ -803,22 +810,28 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addComponent(jbGirarDireita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jtfLinha)
                     .addComponent(jbSolucionarForcaBruta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbSolucionarMetodoX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbNovoCubo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jbSolucionarMetodoBasico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbNovoCubo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlResposta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40))
         );
         containerComandosLayout.setVerticalGroup(
             containerComandosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerComandosLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addComponent(jbNovoCubo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(jbEmbaralhar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(jbSolucionarForcaBruta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addComponent(jbSolucionarMetodoX, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addComponent(jbSolucionarMetodoBasico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jlResposta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(0, 0, 0)
                 .addComponent(jtfLinha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -931,73 +944,81 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_fecharMouseClicked
 
     private void jbGirarEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarEsquerdaActionPerformed
+        jlResposta.setText("");
         String campo = jtfLinha.getText().trim();
 
-        if (campo.equals("0") || campo.equals("1") || campo.equals("2")) {
+        if (campo.equals("0") || campo.equals("2")) {
             c.girarEsquerda(Integer.parseInt(campo));
             colorir();
         } else {
-            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 1 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbGirarEsquerdaActionPerformed
 
     private void jbGirarDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarDireitaActionPerformed
+        jlResposta.setText("");
         String campo = jtfLinha.getText().trim();
 
-        if (campo.equals("0") || campo.equals("1") || campo.equals("2")) {
+        if (campo.equals("0") || campo.equals("2")) {
             c.girarDireita(Integer.parseInt(campo));
             colorir();
         } else {
-            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 1 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbGirarDireitaActionPerformed
 
     private void jbGirarCimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarCimaActionPerformed
+        jlResposta.setText("");
         String campo = jtfColuna.getText().trim();
 
-        if (campo.equals("0") || campo.equals("1") || campo.equals("2")) {
+        if (campo.equals("0") || campo.equals("2")) {
             c.girarCima(Integer.parseInt(campo));
             colorir();
         } else {
-            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 1 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbGirarCimaActionPerformed
 
     private void jbGirarBaixoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarBaixoActionPerformed
+        jlResposta.setText("");
         String campo = jtfColuna.getText().trim();
 
-        if (campo.equals("0") || campo.equals("1") || campo.equals("2")) {
+        if (campo.equals("0") || campo.equals("2")) {
             c.girarBaixo(Integer.parseInt(campo));
             colorir();
         } else {
-            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 1 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbGirarBaixoActionPerformed
 
     private void jbGirarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarHorarioActionPerformed
+        jlResposta.setText("");
         String campo = jtfColuna.getText().trim();
 
-        if (campo.equals("0") || campo.equals("1") || campo.equals("2")) {
+        if (campo.equals("0") || campo.equals("2")) {
             c.girarHorario(Integer.parseInt(campo));
             colorir();
         } else {
-            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 1 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbGirarHorarioActionPerformed
 
     private void jbGirarAntiHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarAntiHorarioActionPerformed
+        jlResposta.setText("");
         String campo = jtfColuna.getText().trim();
 
-        if (campo.equals("0") || campo.equals("1") || campo.equals("2")) {
+        if (campo.equals("0") || campo.equals("2")) {
             c.girarAntiHorario(Integer.parseInt(campo));
             colorir();
         } else {
-            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 1 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Insira um valor válido [0 - 2]", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbGirarAntiHorarioActionPerformed
 
     private void jbEmbaralharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEmbaralharActionPerformed
         desabilitarComponentes();
+
+        jlResposta.setText("");
 
         Thread t = new Thread(() -> {
             for (int i = 0; i < 20; i++) {
@@ -1018,18 +1039,43 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbEmbaralharActionPerformed
 
     private void jbSolucionarForcaBrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolucionarForcaBrutaActionPerformed
-        // TODO add your handling code here:
+        if (c.estaResolvido()) {
+            jlResposta.setText("O cubo está resolvido!");
+        } else {
+            jlResposta.setText("");
+        }
     }//GEN-LAST:event_jbSolucionarForcaBrutaActionPerformed
 
-    private void jbSolucionarMetodoXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolucionarMetodoXActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbSolucionarMetodoXActionPerformed
+    private void jbSolucionarMetodoBasicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolucionarMetodoBasicoActionPerformed
+        if (c.estaResolvido()) {
+            jlResposta.setText("O cubo está resolvido!");
+        } else {
+            jlResposta.setText("");
+            
+            int count = 0;
+            
+            while (!c.estaResolvido() && count < 10) {
+                SolucionarCubo sc = new SolucionarCubo(c);
+                c = sc.solucionarPorMetodoBasico();
+                colorir();
+                
+                count++;
+            }
+            
+            if(count == 10){
+                jlResposta.setText("Não foi possível resolver o cubo!");
+            } else {
+                jlResposta.setText("Cubo Resolvido");
+            }
+        }
+    }//GEN-LAST:event_jbSolucionarMetodoBasicoActionPerformed
 
     private void jbNovoCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoCuboActionPerformed
         novoCubo();
     }//GEN-LAST:event_jbNovoCuboActionPerformed
 
     private void novoCubo() {
+        jlResposta.setText("");
         c = new Cubo();
         colorir();
     }
@@ -1185,6 +1231,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel frente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jbEmbaralhar;
     private javax.swing.JButton jbGirarAntiHorario;
     private javax.swing.JButton jbGirarBaixo;
@@ -1194,7 +1241,8 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jbGirarHorario;
     private javax.swing.JButton jbNovoCubo;
     private javax.swing.JButton jbSolucionarForcaBruta;
-    private javax.swing.JButton jbSolucionarMetodoX;
+    private javax.swing.JButton jbSolucionarMetodoBasico;
+    private javax.swing.JLabel jlResposta;
     private javax.swing.JTextField jtfColuna;
     private javax.swing.JTextField jtfLinha;
     private javax.swing.JLabel minimizar;

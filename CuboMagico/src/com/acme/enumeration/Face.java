@@ -1,5 +1,5 @@
 package com.acme.enumeration;
 
-public enum Lado {
+public enum Face {
     FRENTE, ATRAS, CIMA, BAIXO, ESQUERDA, DIREITA;
 }

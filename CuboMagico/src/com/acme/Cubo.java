@@ -1,7 +1,7 @@
-package com.acme.model;
+package com.acme;
 
 import com.acme.enumeration.Cor;
-import com.acme.enumeration.Lado;
+import com.acme.enumeration.Face;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -14,7 +14,7 @@ public class Cubo {
     private int[][] baixo;
     private int[][] esquerda;
     private int[][] direita;
-    
+
     private Random rand;
 
     public Cubo() {
@@ -24,10 +24,19 @@ public class Cubo {
         baixo = new int[3][3];
         esquerda = new int[3][3];
         direita = new int[3][3];
-        
+
         rand = new Random(System.currentTimeMillis());
 
         povoarCuboResolvido();
+    }
+
+    public void setFaces(List<int[][]> faces) {
+        frente = faces.get(0);
+        cima = faces.get(1);
+        atras = faces.get(2);
+        baixo = faces.get(3);
+        esquerda = faces.get(4);
+        direita = faces.get(5);
     }
 
     public List<int[][]> getFaces() {
@@ -64,9 +73,61 @@ public class Cubo {
         System.out.println("");
     }
 
+    public boolean estaResolvido() {
+        boolean resposta = false;
+
+        if (faceEstaResolvida(Face.FRENTE) && faceEstaResolvida(Face.CIMA) && faceEstaResolvida(Face.ATRAS) && faceEstaResolvida(Face.BAIXO) && faceEstaResolvida(Face.ESQUERDA) && faceEstaResolvida(Face.DIREITA)) {
+            resposta = true;
+        }
+
+        return resposta;
+    }
+
+    private boolean faceEstaResolvida(Face face) {
+        int[][] matrizAux;
+        boolean resposta = true;
+
+        switch (face) {
+            case FRENTE:
+                matrizAux = frente.clone();
+                break;
+            case CIMA:
+                matrizAux = cima.clone();
+                break;
+            case ATRAS:
+                matrizAux = atras.clone();
+                break;
+            case BAIXO:
+                matrizAux = baixo.clone();
+                break;
+            case ESQUERDA:
+                matrizAux = esquerda.clone();
+                break;
+            case DIREITA:
+                matrizAux = direita.clone();
+                break;
+            default:
+                return false;
+        }
+
+        for (int linha = 0; linha < 3; linha++) {
+            for (int coluna = 0; coluna < 3; coluna++) {
+                if (matrizAux[0][0] != matrizAux[linha][coluna]) {
+                    resposta = false;
+                }
+            }
+        }
+
+        return resposta;
+    }
+
     public void embaralhar() {
-        int tipoGiro = rand.nextInt(6);
-        int colunaLinha = rand.nextInt(3);
+        int tipoGiro = rand.nextInt(4);
+        int colunaLinha = rand.nextInt(2);
+        
+        if (colunaLinha == 1) {
+            colunaLinha = 2;
+        }
 
         switch (tipoGiro) {
             case 0:
@@ -107,21 +168,21 @@ public class Cubo {
         }
 
         vetorAux = cima[numColuna].clone();
-        vetorAux2 = getColuna(numColuna, Lado.ESQUERDA);
+        vetorAux2 = getColuna(numColuna, Face.ESQUERDA);
 
         cima[numColuna][2] = vetorAux2[0];
         cima[numColuna][1] = vetorAux2[1];
         cima[numColuna][0] = vetorAux2[2];
 
-        setColuna(numColuna, baixo[x], Lado.ESQUERDA);
+        setColuna(numColuna, baixo[x], Face.ESQUERDA);
 
-        vetorAux2 = getColuna(x, Lado.DIREITA);
+        vetorAux2 = getColuna(x, Face.DIREITA);
 
         baixo[x][2] = vetorAux2[0];
         baixo[x][1] = vetorAux2[1];
         baixo[x][0] = vetorAux2[2];
 
-        setColuna(x, vetorAux, Lado.DIREITA);
+        setColuna(x, vetorAux, Face.DIREITA);
 
         switch (numColuna) {
             case 0:
@@ -173,7 +234,7 @@ public class Cubo {
         }
 
         vetorAux = baixo[x].clone();
-        vetorAux2 = getColuna(numColuna, Lado.ESQUERDA);
+        vetorAux2 = getColuna(numColuna, Face.ESQUERDA);
 
         baixo[x] = vetorAux2.clone();
 
@@ -181,7 +242,7 @@ public class Cubo {
         esquerda[1][numColuna] = cima[numColuna][1];
         esquerda[2][numColuna] = cima[numColuna][0];
 
-        vetorAux2 = getColuna(x, Lado.DIREITA);
+        vetorAux2 = getColuna(x, Face.DIREITA);
         cima[numColuna] = vetorAux2.clone();
 
         direita[0][x] = vetorAux[2];
@@ -312,11 +373,11 @@ public class Cubo {
         int[] vetorAux = new int[3];
         int[][] matrizAux = new int[3][3];
 
-        vetorAux = getColuna(numColuna, Lado.CIMA);
-        setColuna(numColuna, getColuna(numColuna, Lado.FRENTE), Lado.CIMA);
-        setColuna(numColuna, getColuna(numColuna, Lado.BAIXO), Lado.FRENTE);
-        setColuna(numColuna, getColuna(numColuna, Lado.ATRAS), Lado.BAIXO);
-        setColuna(numColuna, vetorAux, Lado.ATRAS);
+        vetorAux = getColuna(numColuna, Face.CIMA);
+        setColuna(numColuna, getColuna(numColuna, Face.FRENTE), Face.CIMA);
+        setColuna(numColuna, getColuna(numColuna, Face.BAIXO), Face.FRENTE);
+        setColuna(numColuna, getColuna(numColuna, Face.ATRAS), Face.BAIXO);
+        setColuna(numColuna, vetorAux, Face.ATRAS);
 
         switch (numColuna) {
             case 0:
@@ -355,11 +416,11 @@ public class Cubo {
         int[] vetorAux = new int[3];
         int[][] matrizAux = new int[3][3];
 
-        vetorAux = getColuna(numColuna, Lado.BAIXO);
-        setColuna(numColuna, getColuna(numColuna, Lado.FRENTE), Lado.BAIXO);
-        setColuna(numColuna, getColuna(numColuna, Lado.CIMA), Lado.FRENTE);
-        setColuna(numColuna, getColuna(numColuna, Lado.ATRAS), Lado.CIMA);
-        setColuna(numColuna, vetorAux, Lado.ATRAS);
+        vetorAux = getColuna(numColuna, Face.BAIXO);
+        setColuna(numColuna, getColuna(numColuna, Face.FRENTE), Face.BAIXO);
+        setColuna(numColuna, getColuna(numColuna, Face.CIMA), Face.FRENTE);
+        setColuna(numColuna, getColuna(numColuna, Face.ATRAS), Face.CIMA);
+        setColuna(numColuna, vetorAux, Face.ATRAS);
 
         switch (numColuna) {
             case 0:
@@ -397,20 +458,20 @@ public class Cubo {
     private void povoarCuboResolvido() {
         for (int linha = 0; linha < 3; linha++) {
             for (int coluna = 0; coluna < 3; coluna++) {
-                frente[linha][coluna] = Cor.AZUL.getCodigoCor();
-                cima[linha][coluna] = Cor.ROSA.getCodigoCor();
-                atras[linha][coluna] = Cor.VERDE.getCodigoCor();
+                frente[linha][coluna] = Cor.VERDE.getCodigoCor();
+                cima[linha][coluna] = Cor.AMARELO.getCodigoCor();
+                atras[linha][coluna] = Cor.AZUL.getCodigoCor();
                 baixo[linha][coluna] = Cor.BRANCO.getCodigoCor();
-                esquerda[linha][coluna] = Cor.AMARELO.getCodigoCor();
-                direita[linha][coluna] = Cor.VERMELHO.getCodigoCor();
+                esquerda[linha][coluna] = Cor.VERMELHO.getCodigoCor();
+                direita[linha][coluna] = Cor.ROSA.getCodigoCor();
             }
         }
     }
 
-    private int[] getColuna(int numColuna, Lado lado) {
+    private int[] getColuna(int numColuna, Face face) {
         int[] coluna = new int[3];
 
-        switch (lado) {
+        switch (face) {
             case FRENTE:
                 coluna[0] = frente[0][numColuna];
                 coluna[1] = frente[1][numColuna];
@@ -451,8 +512,8 @@ public class Cubo {
         return coluna;
     }
 
-    private void setColuna(int numColuna, int[] coluna, Lado lado) {
-        switch (lado) {
+    private void setColuna(int numColuna, int[] coluna, Face face) {
+        switch (face) {
             case FRENTE:
                 frente[0][numColuna] = coluna[0];
                 frente[1][numColuna] = coluna[1];
