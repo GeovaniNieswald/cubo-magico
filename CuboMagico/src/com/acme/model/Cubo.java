@@ -398,7 +398,7 @@ public class Cubo {
         for (int linha = 0; linha < 3; linha++) {
             for (int coluna = 0; coluna < 3; coluna++) {
                 frente[linha][coluna] = Cor.AZUL.getCodigoCor();
-                cima[linha][coluna] = Cor.LARANJA.getCodigoCor();
+                cima[linha][coluna] = Cor.ROSA.getCodigoCor();
                 atras[linha][coluna] = Cor.VERDE.getCodigoCor();
                 baixo[linha][coluna] = Cor.BRANCO.getCodigoCor();
                 esquerda[linha][coluna] = Cor.AMARELO.getCodigoCor();

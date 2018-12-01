@@ -3,6 +3,7 @@ package com.acme;
 import com.acme.enumeration.Cor;
 import com.acme.model.Cubo;
 import java.awt.Color;
+import java.awt.Component;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,10 +15,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     public JFPrincipal() {
         initComponents();
-
-        c = new Cubo();
-
-        colorir();
+        novoCubo();
     }
 
     @SuppressWarnings("unchecked")
@@ -100,6 +98,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jbGirarEsquerda = new javax.swing.JButton();
         jbSolucionarForcaBruta = new javax.swing.JButton();
         jbSolucionarMetodoX = new javax.swing.JButton();
+        jbNovoCubo = new javax.swing.JButton();
         barra = new javax.swing.JPanel();
         fechar = new javax.swing.JLabel();
         minimizar = new javax.swing.JLabel();
@@ -110,9 +109,9 @@ public class JFPrincipal extends javax.swing.JFrame {
         setExtendedState(6);
         setUndecorated(true);
 
-        container.setBackground(new java.awt.Color(255, 255, 255));
+        container.setBackground(new java.awt.Color(204, 204, 204));
 
-        containerFaces.setBackground(new java.awt.Color(255, 255, 255));
+        containerFaces.setBackground(new java.awt.Color(204, 204, 204));
 
         frente.setBackground(new java.awt.Color(255, 255, 255));
         frente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -120,47 +119,38 @@ public class JFPrincipal extends javax.swing.JFrame {
         pos1.setBackground(new java.awt.Color(153, 153, 153));
         pos1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos1.setForeground(new java.awt.Color(153, 153, 153));
-        pos1.setText("1");
 
         pos2.setBackground(new java.awt.Color(153, 153, 153));
         pos2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos2.setForeground(new java.awt.Color(153, 153, 153));
-        pos2.setText("2");
 
         pos3.setBackground(new java.awt.Color(153, 153, 153));
         pos3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos3.setForeground(new java.awt.Color(153, 153, 153));
-        pos3.setText("3");
 
         pos4.setBackground(new java.awt.Color(153, 153, 153));
         pos4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos4.setForeground(new java.awt.Color(153, 153, 153));
-        pos4.setText("4");
 
         pos5.setBackground(new java.awt.Color(153, 153, 153));
         pos5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos5.setForeground(new java.awt.Color(153, 153, 153));
-        pos5.setText("5");
 
         pos6.setBackground(new java.awt.Color(153, 153, 153));
         pos6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos6.setForeground(new java.awt.Color(153, 153, 153));
-        pos6.setText("6");
 
         pos7.setBackground(new java.awt.Color(153, 153, 153));
         pos7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos7.setForeground(new java.awt.Color(153, 153, 153));
-        pos7.setText("7");
 
         pos8.setBackground(new java.awt.Color(153, 153, 153));
         pos8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos8.setForeground(new java.awt.Color(153, 153, 153));
-        pos8.setText("8");
 
         pos9.setBackground(new java.awt.Color(153, 153, 153));
         pos9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos9.setForeground(new java.awt.Color(153, 153, 153));
-        pos9.setText("9");
 
         javax.swing.GroupLayout frenteLayout = new javax.swing.GroupLayout(frente);
         frente.setLayout(frenteLayout);
@@ -218,47 +208,38 @@ public class JFPrincipal extends javax.swing.JFrame {
         pos10.setBackground(new java.awt.Color(153, 153, 153));
         pos10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos10.setForeground(new java.awt.Color(153, 153, 153));
-        pos10.setText("10");
 
         pos11.setBackground(new java.awt.Color(153, 153, 153));
         pos11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos11.setForeground(new java.awt.Color(153, 153, 153));
-        pos11.setText("11");
 
         pos12.setBackground(new java.awt.Color(153, 153, 153));
         pos12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos12.setForeground(new java.awt.Color(153, 153, 153));
-        pos12.setText("12");
 
         pos13.setBackground(new java.awt.Color(153, 153, 153));
         pos13.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos13.setForeground(new java.awt.Color(153, 153, 153));
-        pos13.setText("13");
 
         pos14.setBackground(new java.awt.Color(153, 153, 153));
         pos14.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos14.setForeground(new java.awt.Color(153, 153, 153));
-        pos14.setText("14");
 
         pos15.setBackground(new java.awt.Color(153, 153, 153));
         pos15.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos15.setForeground(new java.awt.Color(153, 153, 153));
-        pos15.setText("15");
 
         pos16.setBackground(new java.awt.Color(153, 153, 153));
         pos16.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos16.setForeground(new java.awt.Color(153, 153, 153));
-        pos16.setText("16");
 
         pos17.setBackground(new java.awt.Color(153, 153, 153));
         pos17.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos17.setForeground(new java.awt.Color(153, 153, 153));
-        pos17.setText("17");
 
         pos18.setBackground(new java.awt.Color(153, 153, 153));
         pos18.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos18.setForeground(new java.awt.Color(153, 153, 153));
-        pos18.setText("18");
 
         javax.swing.GroupLayout direitaLayout = new javax.swing.GroupLayout(direita);
         direita.setLayout(direitaLayout);
@@ -317,47 +298,38 @@ public class JFPrincipal extends javax.swing.JFrame {
         pos19.setBackground(new java.awt.Color(153, 153, 153));
         pos19.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos19.setForeground(new java.awt.Color(153, 153, 153));
-        pos19.setText("19");
 
         pos20.setBackground(new java.awt.Color(153, 153, 153));
         pos20.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos20.setForeground(new java.awt.Color(153, 153, 153));
-        pos20.setText("20");
 
         pos21.setBackground(new java.awt.Color(153, 153, 153));
         pos21.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos21.setForeground(new java.awt.Color(153, 153, 153));
-        pos21.setText("21");
 
         pos22.setBackground(new java.awt.Color(153, 153, 153));
         pos22.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos22.setForeground(new java.awt.Color(153, 153, 153));
-        pos22.setText("22");
 
         pos23.setBackground(new java.awt.Color(153, 153, 153));
         pos23.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos23.setForeground(new java.awt.Color(153, 153, 153));
-        pos23.setText("23");
 
         pos24.setBackground(new java.awt.Color(153, 153, 153));
         pos24.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos24.setForeground(new java.awt.Color(153, 153, 153));
-        pos24.setText("24");
 
         pos25.setBackground(new java.awt.Color(153, 153, 153));
         pos25.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos25.setForeground(new java.awt.Color(153, 153, 153));
-        pos25.setText("25");
 
         pos26.setBackground(new java.awt.Color(153, 153, 153));
         pos26.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos26.setForeground(new java.awt.Color(153, 153, 153));
-        pos26.setText("26");
 
         pos27.setBackground(new java.awt.Color(153, 153, 153));
         pos27.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos27.setForeground(new java.awt.Color(153, 153, 153));
-        pos27.setText("27");
 
         javax.swing.GroupLayout atrasLayout = new javax.swing.GroupLayout(atras);
         atras.setLayout(atrasLayout);
@@ -415,47 +387,38 @@ public class JFPrincipal extends javax.swing.JFrame {
         pos37.setBackground(new java.awt.Color(153, 153, 153));
         pos37.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos37.setForeground(new java.awt.Color(153, 153, 153));
-        pos37.setText("37");
 
         pos38.setBackground(new java.awt.Color(153, 153, 153));
         pos38.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos38.setForeground(new java.awt.Color(153, 153, 153));
-        pos38.setText("38");
 
         pos39.setBackground(new java.awt.Color(153, 153, 153));
         pos39.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos39.setForeground(new java.awt.Color(153, 153, 153));
-        pos39.setText("39");
 
         pos40.setBackground(new java.awt.Color(153, 153, 153));
         pos40.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos40.setForeground(new java.awt.Color(153, 153, 153));
-        pos40.setText("40");
 
         pos41.setBackground(new java.awt.Color(153, 153, 153));
         pos41.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos41.setForeground(new java.awt.Color(153, 153, 153));
-        pos41.setText("41");
 
         pos42.setBackground(new java.awt.Color(153, 153, 153));
         pos42.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos42.setForeground(new java.awt.Color(153, 153, 153));
-        pos42.setText("42");
 
         pos43.setBackground(new java.awt.Color(153, 153, 153));
         pos43.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos43.setForeground(new java.awt.Color(153, 153, 153));
-        pos43.setText("43");
 
         pos44.setBackground(new java.awt.Color(153, 153, 153));
         pos44.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos44.setForeground(new java.awt.Color(153, 153, 153));
-        pos44.setText("44");
 
         pos45.setBackground(new java.awt.Color(153, 153, 153));
         pos45.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos45.setForeground(new java.awt.Color(153, 153, 153));
-        pos45.setText("45");
 
         javax.swing.GroupLayout cimaLayout = new javax.swing.GroupLayout(cima);
         cima.setLayout(cimaLayout);
@@ -513,47 +476,38 @@ public class JFPrincipal extends javax.swing.JFrame {
         pos28.setBackground(new java.awt.Color(153, 153, 153));
         pos28.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos28.setForeground(new java.awt.Color(153, 153, 153));
-        pos28.setText("28");
 
         pos29.setBackground(new java.awt.Color(153, 153, 153));
         pos29.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos29.setForeground(new java.awt.Color(153, 153, 153));
-        pos29.setText("29");
 
         pos30.setBackground(new java.awt.Color(153, 153, 153));
         pos30.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos30.setForeground(new java.awt.Color(153, 153, 153));
-        pos30.setText("30");
 
         pos31.setBackground(new java.awt.Color(153, 153, 153));
         pos31.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos31.setForeground(new java.awt.Color(153, 153, 153));
-        pos31.setText("31");
 
         pos32.setBackground(new java.awt.Color(153, 153, 153));
         pos32.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos32.setForeground(new java.awt.Color(153, 153, 153));
-        pos32.setText("32");
 
         pos33.setBackground(new java.awt.Color(153, 153, 153));
         pos33.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos33.setForeground(new java.awt.Color(153, 153, 153));
-        pos33.setText("33");
 
         pos34.setBackground(new java.awt.Color(153, 153, 153));
         pos34.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos34.setForeground(new java.awt.Color(153, 153, 153));
-        pos34.setText("34");
 
         pos35.setBackground(new java.awt.Color(153, 153, 153));
         pos35.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos35.setForeground(new java.awt.Color(153, 153, 153));
-        pos35.setText("35");
 
         pos36.setBackground(new java.awt.Color(153, 153, 153));
         pos36.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos36.setForeground(new java.awt.Color(153, 153, 153));
-        pos36.setText("36");
 
         javax.swing.GroupLayout esquerdaLayout = new javax.swing.GroupLayout(esquerda);
         esquerda.setLayout(esquerdaLayout);
@@ -612,47 +566,38 @@ public class JFPrincipal extends javax.swing.JFrame {
         pos46.setBackground(new java.awt.Color(153, 153, 153));
         pos46.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos46.setForeground(new java.awt.Color(153, 153, 153));
-        pos46.setText("46");
 
         pos47.setBackground(new java.awt.Color(153, 153, 153));
         pos47.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos47.setForeground(new java.awt.Color(153, 153, 153));
-        pos47.setText("47");
 
         pos48.setBackground(new java.awt.Color(153, 153, 153));
         pos48.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos48.setForeground(new java.awt.Color(153, 153, 153));
-        pos48.setText("48");
 
         pos49.setBackground(new java.awt.Color(153, 153, 153));
         pos49.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos49.setForeground(new java.awt.Color(153, 153, 153));
-        pos49.setText("49");
 
         pos50.setBackground(new java.awt.Color(153, 153, 153));
         pos50.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos50.setForeground(new java.awt.Color(153, 153, 153));
-        pos50.setText("50");
 
         pos51.setBackground(new java.awt.Color(153, 153, 153));
         pos51.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos51.setForeground(new java.awt.Color(153, 153, 153));
-        pos51.setText("51");
 
         pos52.setBackground(new java.awt.Color(153, 153, 153));
         pos52.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos52.setForeground(new java.awt.Color(153, 153, 153));
-        pos52.setText("52");
 
         pos53.setBackground(new java.awt.Color(153, 153, 153));
         pos53.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos53.setForeground(new java.awt.Color(153, 153, 153));
-        pos53.setText("53");
 
         pos54.setBackground(new java.awt.Color(153, 153, 153));
         pos54.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         pos54.setForeground(new java.awt.Color(153, 153, 153));
-        pos54.setText("54");
 
         javax.swing.GroupLayout baixoLayout = new javax.swing.GroupLayout(baixo);
         baixo.setLayout(baixoLayout);
@@ -715,24 +660,21 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(esquerda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(containerFacesLayout.createSequentialGroup()
-                        .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(containerFacesLayout.createSequentialGroup()
-                                .addComponent(frente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(direita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(atras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(baixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(containerFacesLayout.createSequentialGroup()
-                        .addComponent(cima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cima, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(baixo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(frente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(0, 0, 0)
+                .addComponent(direita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(atras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         containerFacesLayout.setVerticalGroup(
             containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerFacesLayout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addComponent(cima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(esquerda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -741,9 +683,12 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addComponent(atras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(baixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
+        containerComandos.setBackground(new java.awt.Color(255, 255, 255));
+
+        jbEmbaralhar.setBackground(new java.awt.Color(204, 204, 204));
         jbEmbaralhar.setText("Embaralhar");
         jbEmbaralhar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -763,6 +708,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jtfColuna.setText("0");
         jtfColuna.setToolTipText("Coluna");
 
+        jbGirarCima.setBackground(new java.awt.Color(204, 204, 204));
         jbGirarCima.setText("Girar Cima");
         jbGirarCima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -770,6 +716,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jbGirarHorario.setBackground(new java.awt.Color(204, 204, 204));
         jbGirarHorario.setText("Girar Horario");
         jbGirarHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -777,6 +724,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jbGirarAntiHorario.setBackground(new java.awt.Color(204, 204, 204));
         jbGirarAntiHorario.setText("Girar Anti Horario");
         jbGirarAntiHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -784,6 +732,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jbGirarBaixo.setBackground(new java.awt.Color(204, 204, 204));
         jbGirarBaixo.setText("Girar Baixo");
         jbGirarBaixo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -791,6 +740,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jbGirarDireita.setBackground(new java.awt.Color(204, 204, 204));
         jbGirarDireita.setText("Girar Direita");
         jbGirarDireita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -798,6 +748,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jbGirarEsquerda.setBackground(new java.awt.Color(204, 204, 204));
         jbGirarEsquerda.setText("Girar Esquerda");
         jbGirarEsquerda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -805,6 +756,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jbSolucionarForcaBruta.setBackground(new java.awt.Color(204, 204, 204));
         jbSolucionarForcaBruta.setText("Solucionar Por Força Bruta");
         jbSolucionarForcaBruta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -812,10 +764,19 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jbSolucionarMetodoX.setBackground(new java.awt.Color(204, 204, 204));
         jbSolucionarMetodoX.setText("Solucionar Pelo Metódo X");
         jbSolucionarMetodoX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSolucionarMetodoXActionPerformed(evt);
+            }
+        });
+
+        jbNovoCubo.setBackground(new java.awt.Color(204, 204, 204));
+        jbNovoCubo.setText("Novo Cubo");
+        jbNovoCubo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNovoCuboActionPerformed(evt);
             }
         });
 
@@ -842,19 +803,22 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addComponent(jbGirarDireita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jtfLinha)
                     .addComponent(jbSolucionarForcaBruta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbSolucionarMetodoX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jbSolucionarMetodoX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbNovoCubo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40))
         );
         containerComandosLayout.setVerticalGroup(
             containerComandosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerComandosLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(80, 80, 80)
+                .addComponent(jbNovoCubo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(jbEmbaralhar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(jbSolucionarForcaBruta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(jbSolucionarMetodoX, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(0, 0, 0)
                 .addComponent(jtfLinha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -877,7 +841,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addGap(80, 80, 80))
         );
 
-        barra.setBackground(new java.awt.Color(255, 255, 255));
+        barra.setBackground(new java.awt.Color(204, 204, 204));
 
         fechar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/acme/resources/cancel.png"))); // NOI18N
@@ -912,10 +876,9 @@ public class JFPrincipal extends javax.swing.JFrame {
             barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(barraLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fechar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
+                .addGroup(barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(minimizar, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(fechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout containerLayout = new javax.swing.GroupLayout(container);
@@ -926,18 +889,19 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addComponent(containerFaces, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(containerComandos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         containerLayout.setVerticalGroup(
             containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerLayout.createSequentialGroup()
                 .addGroup(containerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(containerFaces, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(containerLayout.createSequentialGroup()
+                    .addComponent(containerComandos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, containerLayout.createSequentialGroup()
                         .addComponent(barra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(containerComandos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(0, 0, 0))
         );
 
@@ -1033,21 +997,21 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbGirarAntiHorarioActionPerformed
 
     private void jbEmbaralharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEmbaralharActionPerformed
-        jbEmbaralhar.setEnabled(false);
+        desabilitarComponentes();
 
         Thread t = new Thread(() -> {
             for (int i = 0; i < 20; i++) {
                 c.embaralhar();
                 colorir();
-                
+
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
-            jbEmbaralhar.setEnabled(true);
+
+            habilitarComponentes();
         });
 
         t.start();
@@ -1060,6 +1024,27 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void jbSolucionarMetodoXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolucionarMetodoXActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbSolucionarMetodoXActionPerformed
+
+    private void jbNovoCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoCuboActionPerformed
+        novoCubo();
+    }//GEN-LAST:event_jbNovoCuboActionPerformed
+
+    private void novoCubo() {
+        c = new Cubo();
+        colorir();
+    }
+
+    private void desabilitarComponentes() {
+        for (Component c : containerComandos.getComponents()) {
+            c.setEnabled(false);
+        }
+    }
+
+    private void habilitarComponentes() {
+        for (Component c : containerComandos.getComponents()) {
+            c.setEnabled(true);
+        }
+    }
 
     private void colorir() {
         List<int[][]> faces = c.getFaces();
@@ -1157,8 +1142,8 @@ public class JFPrincipal extends javax.swing.JFrame {
             return Color.YELLOW;
         } else if (valorCor == Cor.BRANCO.getCodigoCor()) {
             return Color.WHITE;
-        } else if (valorCor == Cor.LARANJA.getCodigoCor()) {
-            return Color.ORANGE;
+        } else if (valorCor == Cor.ROSA.getCodigoCor()) {
+            return Color.MAGENTA;
         } else if (valorCor == Cor.VERDE.getCodigoCor()) {
             return Color.GREEN;
         } else if (valorCor == Cor.VERMELHO.getCodigoCor()) {
@@ -1207,6 +1192,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jbGirarDireita;
     private javax.swing.JButton jbGirarEsquerda;
     private javax.swing.JButton jbGirarHorario;
+    private javax.swing.JButton jbNovoCubo;
     private javax.swing.JButton jbSolucionarForcaBruta;
     private javax.swing.JButton jbSolucionarMetodoX;
     private javax.swing.JTextField jtfColuna;
