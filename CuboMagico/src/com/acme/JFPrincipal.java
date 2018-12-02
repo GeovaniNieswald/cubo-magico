@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class JFPrincipal extends javax.swing.JFrame {
 
     private Cubo c;
-    Thread t;
+    private Thread threadForcaBruta;
 
     public JFPrincipal() {
         initComponents();
@@ -791,6 +791,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         jbPararForcaBruta.setBackground(new java.awt.Color(204, 204, 204));
         jbPararForcaBruta.setText("Parar  Força Bruta");
+        jbPararForcaBruta.setEnabled(false);
         jbPararForcaBruta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbPararForcaBrutaActionPerformed(evt);
@@ -825,7 +826,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbPararForcaBruta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jlResposta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(35, 35, 35))
+                .addGap(40, 40, 40))
         );
         containerComandosLayout.setVerticalGroup(
             containerComandosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -834,9 +835,9 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jbNovoCubo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(10, 10, 10)
                 .addComponent(jbEmbaralhar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(20, 20, 20)
                 .addComponent(jbSolucionarForcaBruta, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jbPararForcaBruta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -844,7 +845,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addComponent(jbSolucionarMetodoBasico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jlResposta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(0, 0, 0)
                 .addComponent(jtfLinha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1033,88 +1034,60 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         jlResposta.setText("");
 
-        Thread h = new Thread(() -> {
-            for (int i = 0; i < 30; i++) {
-                c.embaralhar();
-                colorir();
-
+        Thread t = new Thread(() -> {
+            for (int i = 0; i < 20; i++) {
                 try {
-                    Thread.sleep(50);
+                    c.embaralhar();
+                    colorir();
+
+                    Thread.sleep(300);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
             habilitarComponentes();
+            jbPararForcaBruta.setEnabled(false);
         });
 
-        h.start();
+        t.start();
     }//GEN-LAST:event_jbEmbaralharActionPerformed
 
     private void jbSolucionarForcaBrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolucionarForcaBrutaActionPerformed
         if (c.estaResolvido()) {
             jlResposta.setText("O cubo está resolvido!");
         } else {
+            desabilitarComponentes();
+            jbPararForcaBruta.setEnabled(true);
+
             jlResposta.setText("");
 
-            
-            t = new Thread(() -> {
-                for (int i = 0; i < i+1; i++) {
-                    c.forcaBruta();
-                    colorir();
-                    if (c.estaResolvido()) {
-                        jlResposta.setText("O cubo está resolvido!");
-                        //i = 3000;
-                    }
+            threadForcaBruta = new Thread(() -> {
+                while (!c.estaResolvido()) {
                     try {
+                        SolucionarCubo sc = new SolucionarCubo(c);
+                        c = sc.solucionarPorForcaBruta();
+                        colorir();
+
                         Thread.sleep(50);
+
+                        if (c.estaResolvido()) {
+                            jlResposta.setText("Cubo Resolvido");
+                            habilitarComponentes();
+                            jbPararForcaBruta.setEnabled(false);
+                        }
                     } catch (InterruptedException ex) {
                         Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-
             });
 
-            t.start();
+            threadForcaBruta.start();
         }
-
-
     }//GEN-LAST:event_jbSolucionarForcaBrutaActionPerformed
-    private void metodoBasico() {
-        int count = 0;
-        if (c.estaResolvido()) {
-            jlResposta.setText("O cubo está resolvido!");
 
-        } else {
-            jlResposta.setText("");
-
-           // int count = 0;
-
-            while (!c.estaResolvido() && count < 40) {
-                SolucionarCubo sc = new SolucionarCubo(c);
-                c = sc.solucionarPorMetodoBasico();
-                colorir();
-
-                count++;
-            }
-
-            if (count == 40) {
-                count=0;
-                c.embaralhar();
-                metodoBasico();
-               // jlResposta.setText("Não foi possível resolver o cubo!");
-            } else {
-                jlResposta.setText("Cubo Resolvido");
-
-            }
-            
-        }
-        
-    }
     private void jbSolucionarMetodoBasicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolucionarMetodoBasicoActionPerformed
         metodoBasico();
-              
-
     }//GEN-LAST:event_jbSolucionarMetodoBasicoActionPerformed
 
     private void jbNovoCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoCuboActionPerformed
@@ -1122,9 +1095,35 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbNovoCuboActionPerformed
 
     private void jbPararForcaBrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPararForcaBrutaActionPerformed
-        t.stop();
-         jlResposta.setText("");
+        habilitarComponentes();
+        jbPararForcaBruta.setEnabled(false);
+        threadForcaBruta.stop();
+        jlResposta.setText("");
     }//GEN-LAST:event_jbPararForcaBrutaActionPerformed
+
+    private void metodoBasico() {
+        if (c.estaResolvido()) {
+            jlResposta.setText("O cubo está resolvido!");
+        } else {
+            jlResposta.setText("");
+
+            int count = 0;
+            while (!c.estaResolvido() && count < 10) {
+                SolucionarCubo sc = new SolucionarCubo(c);
+                c = sc.solucionarPorMetodoBasico();
+                colorir();
+
+                count++;
+            }
+
+            if (count == 10) {
+                c.embaralhar();
+                metodoBasico();
+            } else {
+                jlResposta.setText("Cubo Resolvido");
+            }
+        }
+    }
 
     private void novoCubo() {
         jlResposta.setText("");

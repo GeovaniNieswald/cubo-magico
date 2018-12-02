@@ -3,6 +3,7 @@ package com.acme;
 import com.acme.enumeration.Cor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class SolucionarCubo {
 
@@ -22,6 +23,8 @@ public class SolucionarCubo {
     private int rosa;
     private int vermelho;
 
+    private Random rand;
+
     public SolucionarCubo(Cubo c) {
         this.c = c;
         List<int[][]> faces = c.getFaces();
@@ -39,6 +42,8 @@ public class SolucionarCubo {
         azul = Cor.AZUL.getCodigoCor();
         rosa = Cor.ROSA.getCodigoCor();
         vermelho = Cor.VERMELHO.getCodigoCor();
+
+        rand = new Random(System.currentTimeMillis());
     }
 
     public Cubo solucionarPorMetodoBasico() {
@@ -57,13 +62,40 @@ public class SolucionarCubo {
         faces.add(esquerda);
         faces.add(direita);
         c.setFaces(faces);
-        
+
         return c;
     }
 
     public Cubo solucionarPorForcaBruta() {
+        if (!c.estaResolvido()) {
+            int tipoGiro = rand.nextInt(4);
+            int colunaLinha = rand.nextInt(2);
 
-        // Algoritmo
+            if (colunaLinha == 1) {
+                colunaLinha = 2;
+            }
+
+            switch (tipoGiro) {
+                case 0:
+                    c.girarAntiHorario(colunaLinha);
+                    break;
+                case 1:
+                    c.girarHorario(colunaLinha);
+                    break;
+                case 2:
+                    c.girarEsquerda(colunaLinha);
+                    break;
+                case 3:
+                    c.girarDireita(colunaLinha);
+                    break;
+                case 4:
+                    c.girarCima(colunaLinha);
+                    break;
+                case 5:
+                    c.girarBaixo(colunaLinha);
+            }
+        }
+
         List<int[][]> faces = new ArrayList<>();
         faces.add(frente);
         faces.add(cima);
