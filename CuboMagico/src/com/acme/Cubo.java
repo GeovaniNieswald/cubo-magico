@@ -121,10 +121,43 @@ public class Cubo {
         return resposta;
     }
 
+    public void forcaBruta() {
+        int cont = 0;
+        if (!estaResolvido() && cont < 100) {
+            int tipoGiro = rand.nextInt(4);
+            int colunaLinha = rand.nextInt(2);
+
+            if (colunaLinha == 1) {
+                colunaLinha = 2;
+            }
+
+            switch (tipoGiro) {
+                case 0:
+                    girarAntiHorario(colunaLinha);
+                    break;
+                case 1:
+                    girarHorario(colunaLinha);
+                    break;
+                case 2:
+                    girarEsquerda(colunaLinha);
+                    break;
+                case 3:
+                    girarDireita(colunaLinha);
+                    break;
+                case 4:
+                    girarCima(colunaLinha);
+                    break;
+                case 5:
+                    girarBaixo(colunaLinha);
+            }
+        }
+        cont++;
+    }
+
     public void embaralhar() {
         int tipoGiro = rand.nextInt(4);
         int colunaLinha = rand.nextInt(2);
-        
+
         if (colunaLinha == 1) {
             colunaLinha = 2;
         }
@@ -551,4 +584,552 @@ public class Cubo {
                 baixo[2][numColuna] = coluna[2];
         }
     }
+
+    public void forcaBruta2() {
+
+        int cont = 0;
+        while (cont < 30) {
+            if (!estaResolvido()) {
+                int tipoGiro = 0;
+                int colunaLinha = 0;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+           else if (!estaResolvido()) {
+                int tipoGiro = 1;
+                int colunaLinha = 0;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+           else if (!estaResolvido()) {
+                int tipoGiro = 2;
+                int colunaLinha = 0;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+          else  if (!estaResolvido()) {
+                int tipoGiro = 3;
+                int colunaLinha = 0;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+           else if (!estaResolvido()) {
+                int tipoGiro = 4;
+                int colunaLinha = 0;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+           else if (!estaResolvido()) {
+                int tipoGiro = 5;
+                int colunaLinha = 0;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+          else  if (!estaResolvido()) {
+                int tipoGiro = 0;
+                int colunaLinha = 1;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+          else  if (!estaResolvido()) {
+                int tipoGiro = 1;
+                int colunaLinha = 1;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+           else if (!estaResolvido()) {
+                int tipoGiro = 2;
+                int colunaLinha = 1;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+          else  if (!estaResolvido()) {
+                int tipoGiro = 3;
+                int colunaLinha = 1;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+          else  if (!estaResolvido()) {
+                int tipoGiro = 4;
+                int colunaLinha = 1;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+          else  if (!estaResolvido()) {
+                int tipoGiro = 5;
+                int colunaLinha = 1;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+          else  if (!estaResolvido()) {
+                int tipoGiro = 0;
+                int colunaLinha = 2;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+          else  if (!estaResolvido()) {
+                int tipoGiro = 1;
+                int colunaLinha = 2;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+          else  if (!estaResolvido()) {
+                int tipoGiro = 2;
+                int colunaLinha = 2;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+          else  if (!estaResolvido()) {
+                int tipoGiro = 3;
+                int colunaLinha = 2;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+         else   if (!estaResolvido()) {
+                int tipoGiro = 4;
+                int colunaLinha = 2;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+
+        else    if (!estaResolvido()) {
+                int tipoGiro = 5;
+                int colunaLinha = 2;
+
+                if (colunaLinha == 1) {
+                    colunaLinha = 2;
+                }
+
+                switch (tipoGiro) {
+                    case 0:
+                        girarAntiHorario(colunaLinha);
+                        break;
+                    case 1:
+                        girarHorario(colunaLinha);
+                        break;
+                    case 2:
+                        girarEsquerda(colunaLinha);
+                        break;
+                    case 3:
+                        girarDireita(colunaLinha);
+                        break;
+                    case 4:
+                        girarCima(colunaLinha);
+                        break;
+                    case 5:
+                        girarBaixo(colunaLinha);
+                }
+
+            }
+            cont++;
+        }
+    }
+
 }

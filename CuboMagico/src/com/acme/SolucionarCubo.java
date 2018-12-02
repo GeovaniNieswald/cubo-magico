@@ -57,14 +57,13 @@ public class SolucionarCubo {
         faces.add(esquerda);
         faces.add(direita);
         c.setFaces(faces);
-
+        
         return c;
     }
 
     public Cubo solucionarPorForcaBruta() {
 
         // Algoritmo
-        
         List<int[][]> faces = new ArrayList<>();
         faces.add(frente);
         faces.add(cima);

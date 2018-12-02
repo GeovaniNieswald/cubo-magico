@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 public class JFPrincipal extends javax.swing.JFrame {
 
     private Cubo c;
+    Thread t;
 
     public JFPrincipal() {
         initComponents();
@@ -100,6 +101,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jbNovoCubo = new javax.swing.JButton();
         jlResposta = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jbPararForcaBruta = new javax.swing.JButton();
         barra = new javax.swing.JPanel();
         fechar = new javax.swing.JLabel();
         minimizar = new javax.swing.JLabel();
@@ -674,7 +676,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         containerFacesLayout.setVerticalGroup(
             containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerFacesLayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(containerFacesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(esquerda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -683,7 +685,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addComponent(atras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(baixo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         containerComandos.setBackground(new java.awt.Color(255, 255, 255));
@@ -787,6 +789,14 @@ public class JFPrincipal extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Cubo Mágico");
 
+        jbPararForcaBruta.setBackground(new java.awt.Color(204, 204, 204));
+        jbPararForcaBruta.setText("Parar  Força Bruta");
+        jbPararForcaBruta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPararForcaBrutaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout containerComandosLayout = new javax.swing.GroupLayout(containerComandos);
         containerComandos.setLayout(containerComandosLayout);
         containerComandosLayout.setHorizontalGroup(
@@ -812,9 +822,10 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addComponent(jbSolucionarForcaBruta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbSolucionarMetodoBasico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbNovoCubo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jlResposta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(40, 40, 40))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbPararForcaBruta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlResposta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
         containerComandosLayout.setVerticalGroup(
             containerComandosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -825,13 +836,15 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addComponent(jbNovoCubo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(jbEmbaralhar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(jbSolucionarForcaBruta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
+                .addComponent(jbSolucionarForcaBruta, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jbPararForcaBruta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addComponent(jbSolucionarMetodoBasico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jlResposta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel1)
                 .addGap(0, 0, 0)
                 .addComponent(jtfLinha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1020,13 +1033,13 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         jlResposta.setText("");
 
-        Thread t = new Thread(() -> {
-            for (int i = 0; i < 20; i++) {
+        Thread h = new Thread(() -> {
+            for (int i = 0; i < 30; i++) {
                 c.embaralhar();
                 colorir();
 
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(50);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1035,7 +1048,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             habilitarComponentes();
         });
 
-        t.start();
+        h.start();
     }//GEN-LAST:event_jbEmbaralharActionPerformed
 
     private void jbSolucionarForcaBrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolucionarForcaBrutaActionPerformed
@@ -1043,36 +1056,75 @@ public class JFPrincipal extends javax.swing.JFrame {
             jlResposta.setText("O cubo está resolvido!");
         } else {
             jlResposta.setText("");
-        }
-    }//GEN-LAST:event_jbSolucionarForcaBrutaActionPerformed
 
-    private void jbSolucionarMetodoBasicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolucionarMetodoBasicoActionPerformed
+            
+            t = new Thread(() -> {
+                for (int i = 0; i < i+1; i++) {
+                    c.forcaBruta();
+                    colorir();
+                    if (c.estaResolvido()) {
+                        jlResposta.setText("O cubo está resolvido!");
+                        //i = 3000;
+                    }
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+            });
+
+            t.start();
+        }
+
+
+    }//GEN-LAST:event_jbSolucionarForcaBrutaActionPerformed
+    private void metodoBasico() {
+        int count = 0;
         if (c.estaResolvido()) {
             jlResposta.setText("O cubo está resolvido!");
+
         } else {
             jlResposta.setText("");
-            
-            int count = 0;
-            
-            while (!c.estaResolvido() && count < 10) {
+
+           // int count = 0;
+
+            while (!c.estaResolvido() && count < 40) {
                 SolucionarCubo sc = new SolucionarCubo(c);
                 c = sc.solucionarPorMetodoBasico();
                 colorir();
-                
+
                 count++;
             }
-            
-            if(count == 10){
-                jlResposta.setText("Não foi possível resolver o cubo!");
+
+            if (count == 40) {
+                count=0;
+                c.embaralhar();
+                metodoBasico();
+               // jlResposta.setText("Não foi possível resolver o cubo!");
             } else {
                 jlResposta.setText("Cubo Resolvido");
+
             }
+            
         }
+        
+    }
+    private void jbSolucionarMetodoBasicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolucionarMetodoBasicoActionPerformed
+        metodoBasico();
+              
+
     }//GEN-LAST:event_jbSolucionarMetodoBasicoActionPerformed
 
     private void jbNovoCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoCuboActionPerformed
         novoCubo();
     }//GEN-LAST:event_jbNovoCuboActionPerformed
+
+    private void jbPararForcaBrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPararForcaBrutaActionPerformed
+        t.stop();
+         jlResposta.setText("");
+    }//GEN-LAST:event_jbPararForcaBrutaActionPerformed
 
     private void novoCubo() {
         jlResposta.setText("");
@@ -1240,6 +1292,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jbGirarEsquerda;
     private javax.swing.JButton jbGirarHorario;
     private javax.swing.JButton jbNovoCubo;
+    private javax.swing.JButton jbPararForcaBruta;
     private javax.swing.JButton jbSolucionarForcaBruta;
     private javax.swing.JButton jbSolucionarMetodoBasico;
     private javax.swing.JLabel jlResposta;
