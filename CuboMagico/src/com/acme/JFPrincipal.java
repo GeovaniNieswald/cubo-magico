@@ -13,6 +13,10 @@ public class JFPrincipal extends javax.swing.JFrame {
     private Cubo c;
     private Thread threadForcaBruta;
 
+    private long inicio;
+    private long fim;
+    private double tempo;
+
     public JFPrincipal() {
         initComponents();
         novoCubo();
@@ -102,6 +106,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jlResposta = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jbPararForcaBruta = new javax.swing.JButton();
+        jlTempo = new javax.swing.JLabel();
         barra = new javax.swing.JPanel();
         fechar = new javax.swing.JLabel();
         minimizar = new javax.swing.JLabel();
@@ -798,6 +803,8 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jlTempo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout containerComandosLayout = new javax.swing.GroupLayout(containerComandos);
         containerComandos.setLayout(containerComandosLayout);
         containerComandosLayout.setHorizontalGroup(
@@ -825,7 +832,8 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addComponent(jbNovoCubo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbPararForcaBruta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jlResposta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jlResposta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlTempo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40))
         );
         containerComandosLayout.setVerticalGroup(
@@ -845,7 +853,9 @@ public class JFPrincipal extends javax.swing.JFrame {
                 .addComponent(jbSolucionarMetodoBasico, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jlResposta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jlTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(0, 0, 0)
                 .addComponent(jtfLinha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -959,6 +969,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void jbGirarEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarEsquerdaActionPerformed
         jlResposta.setText("");
+        jlTempo.setText("");
         String campo = jtfLinha.getText().trim();
 
         if (campo.equals("0") || campo.equals("2")) {
@@ -971,6 +982,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void jbGirarDireitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarDireitaActionPerformed
         jlResposta.setText("");
+        jlTempo.setText("");
         String campo = jtfLinha.getText().trim();
 
         if (campo.equals("0") || campo.equals("2")) {
@@ -983,6 +995,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void jbGirarCimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarCimaActionPerformed
         jlResposta.setText("");
+        jlTempo.setText("");
         String campo = jtfColuna.getText().trim();
 
         if (campo.equals("0") || campo.equals("2")) {
@@ -995,6 +1008,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void jbGirarBaixoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarBaixoActionPerformed
         jlResposta.setText("");
+        jlTempo.setText("");
         String campo = jtfColuna.getText().trim();
 
         if (campo.equals("0") || campo.equals("2")) {
@@ -1007,6 +1021,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void jbGirarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarHorarioActionPerformed
         jlResposta.setText("");
+        jlTempo.setText("");
         String campo = jtfColuna.getText().trim();
 
         if (campo.equals("0") || campo.equals("2")) {
@@ -1019,6 +1034,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void jbGirarAntiHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGirarAntiHorarioActionPerformed
         jlResposta.setText("");
+        jlTempo.setText("");
         String campo = jtfColuna.getText().trim();
 
         if (campo.equals("0") || campo.equals("2")) {
@@ -1033,6 +1049,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         desabilitarComponentes();
 
         jlResposta.setText("");
+        jlTempo.setText("");
 
         Thread t = new Thread(() -> {
             for (int i = 0; i < 20; i++) {
@@ -1061,23 +1078,22 @@ public class JFPrincipal extends javax.swing.JFrame {
             jbPararForcaBruta.setEnabled(true);
 
             jlResposta.setText("");
+            jlTempo.setText("");
 
             threadForcaBruta = new Thread(() -> {
                 while (!c.estaResolvido()) {
-                    try {
-                        SolucionarCubo sc = new SolucionarCubo(c);
-                        c = sc.solucionarPorForcaBruta();
-                        colorir();
+                    SolucionarCubo sc = new SolucionarCubo(c);
+                    c = sc.solucionarPorForcaBruta();
+                    colorir();
 
-                        Thread.sleep(50);
+                    if (c.estaResolvido()) {
+                        fim = System.nanoTime();
+                        tempo = (double) (fim - inicio) /  1000000.0;
 
-                        if (c.estaResolvido()) {
-                            jlResposta.setText("Cubo Resolvido");
-                            habilitarComponentes();
-                            jbPararForcaBruta.setEnabled(false);
-                        }
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(JFPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                        jlTempo.setText(tempo + " milissegundos");
+                        jlResposta.setText("Cubo Resolvido");
+                        habilitarComponentes();
+                        jbPararForcaBruta.setEnabled(false);
                     }
                 }
             });
@@ -1087,6 +1103,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbSolucionarForcaBrutaActionPerformed
 
     private void jbSolucionarMetodoBasicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSolucionarMetodoBasicoActionPerformed
+        inicio = System.nanoTime();
         metodoBasico();
     }//GEN-LAST:event_jbSolucionarMetodoBasicoActionPerformed
 
@@ -1099,6 +1116,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         jbPararForcaBruta.setEnabled(false);
         threadForcaBruta.stop();
         jlResposta.setText("");
+        jlTempo.setText("");
     }//GEN-LAST:event_jbPararForcaBrutaActionPerformed
 
     private void metodoBasico() {
@@ -1106,6 +1124,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             jlResposta.setText("O cubo está resolvido!");
         } else {
             jlResposta.setText("");
+            jlTempo.setText("");
 
             int count = 0;
             while (!c.estaResolvido() && count < 10) {
@@ -1120,6 +1139,10 @@ public class JFPrincipal extends javax.swing.JFrame {
                 c.embaralhar();
                 metodoBasico();
             } else {
+                fim = System.nanoTime();
+                tempo = (double) (fim - inicio) / 1000000.0;
+
+                jlTempo.setText(tempo + " milissegundos");
                 jlResposta.setText("Cubo Resolvido");
             }
         }
@@ -1127,6 +1150,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void novoCubo() {
         jlResposta.setText("");
+        jlTempo.setText("");
         c = new Cubo();
         colorir();
     }
@@ -1295,6 +1319,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jbSolucionarForcaBruta;
     private javax.swing.JButton jbSolucionarMetodoBasico;
     private javax.swing.JLabel jlResposta;
+    private javax.swing.JLabel jlTempo;
     private javax.swing.JTextField jtfColuna;
     private javax.swing.JTextField jtfLinha;
     private javax.swing.JLabel minimizar;

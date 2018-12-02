@@ -1342,6 +1342,7 @@
                           <Component id="jLabel3" max="32767" attributes="0"/>
                           <Component id="jbPararForcaBruta" alignment="0" max="32767" attributes="0"/>
                           <Component id="jlResposta" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jlTempo" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
@@ -1364,7 +1365,9 @@
                       <Component id="jbSolucionarMetodoBasico" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jlResposta" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="jlTempo" min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="jtfLinha" min="-2" pref="30" max="-2" attributes="0"/>
@@ -1554,6 +1557,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbPararForcaBrutaActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jlTempo">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
